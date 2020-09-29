@@ -2,10 +2,11 @@
 #
 # https://gqlgen.com/getting-started/
 
-type Todo {
+# Notes
+type Note {
   id: ID!
-  text: String!
-  done: Boolean!
+  title: String!
+  content: String!
   user: User!
 }
 
@@ -15,14 +16,16 @@ type User {
 }
 
 type Query {
-  todos: [Todo!]!
+  notes: [Note]!
 }
 
-input NewTodo {
-  text: String!
-  userId: String!
+input newNote {
+  title: String!
+  content: String!
+  userName: String!
 }
 
 type Mutation {
-  createTodo(input: NewTodo!): Todo!
+  createNote(input: newNote): Note!
+  deleteNote(noteId: String!): String!
 }
